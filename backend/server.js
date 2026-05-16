@@ -3,7 +3,7 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const errorMiddleware = require('./middleware/errorMiddleware');
+const errorHandler = require('./middleware/errorMiddleware');
 const notFound = require('./middleware/notFound');
 const jobRoutes = require('./routes/jobRoutes');
 
@@ -19,7 +19,7 @@ app.use('/api/jobs', jobRoutes);
 
 // Error handling middleware
 app.use(notFound);
-app.use(errorMiddleware);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
