@@ -17,8 +17,8 @@ router.get('/:id', getJobById);
 // POST create a new job
 router.post('/', createJob);
 
-// PUT update a job
-router.put('/:id', updateJob);
+// PATCH update job status
+router.patch('/:id', updateJob);
 
 // DELETE a job
 router.delete('/:id', deleteJob);

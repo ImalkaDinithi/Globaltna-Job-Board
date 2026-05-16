@@ -3,7 +3,18 @@ const JobRequest = require('../models/JobRequest');
 // Get all jobs
 const getAllJobs = async (req, res, next) => {
   try {
-    const jobs = await JobRequest.find().sort({ createdAt: -1 });
+    const { category, status } = req.query;
+    const filter = {};
+
+    if (category) {
+      filter.category = category;
+    }
+
+    if (status) {
+      filter.status = status;
+    }
+
+    const jobs = await JobRequest.find(filter).sort({ createdAt: -1 });
     res.status(200).json({
       success: true,
       data: jobs,
@@ -34,25 +45,50 @@ const getJobById = async (req, res, next) => {
   }
 };
 
+const allowedStatuses = ['Open', 'In Progress', 'Closed'];
+
 // Create a job
 const createJob = async (req, res, next) => {
   try {
-    const { title, description, company, location, salary, jobType } = req.body;
+    const {
+      title,
+      description,
+      category,
+      location,
+      contactName,
+      contactEmail,
+      status,
+    } = req.body;
 
-    if (!title || !description || !company || !location || !jobType) {
+    if (!title || !description) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide all required fields',
+        message: 'Title and description are required',
+      });
+    }
+
+    if (contactEmail && !/.+@.+\..+/.test(contactEmail)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a valid contactEmail',
+      });
+    }
+
+    if (status && !allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Status must be one of: ${allowedStatuses.join(', ')}`,
       });
     }
 
     const job = new JobRequest({
       title,
       description,
-      company,
+      category,
       location,
-      salary,
-      jobType,
+      contactName,
+      contactEmail,
+      status,
     });
 
     await job.save();
@@ -67,10 +103,26 @@ const createJob = async (req, res, next) => {
   }
 };
 
-// Update a job
+// Update a job status
 const updateJob = async (req, res, next) => {
   try {
-    let job = await JobRequest.findById(req.params.id);
+    const { status } = req.body;
+
+    if (!status) {
+      return res.status(400).json({
+        success: false,
+        message: 'Status is required for update',
+      });
+    }
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Status must be one of: ${allowedStatuses.join(', ')}`,
+      });
+    }
+
+    const job = await JobRequest.findById(req.params.id);
 
     if (!job) {
       return res.status(404).json({
@@ -79,16 +131,13 @@ const updateJob = async (req, res, next) => {
       });
     }
 
-    job = await JobRequest.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    job.status = status;
+    await job.save();
 
     res.status(200).json({
       success: true,
       data: job,
-      message: 'Job updated successfully',
+      message: 'Job status updated successfully',
     });
   } catch (error) {
     next(error);
