@@ -10,21 +10,27 @@ const jobRequestSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    company: {
+    category: {
       type: String,
-      required: true,
     },
     location: {
       type: String,
-      required: true,
     },
-    salary: {
+    contactName: {
       type: String,
     },
-    jobType: {
+    contactEmail: {
       type: String,
-      enum: ['Full-time', 'Part-time', 'Contract', 'Temporary'],
-      required: true,
+      match: [/.+@.+\..+/, 'Please fill a valid email address'],
+    },
+    status: {
+      type: String,
+      enum: ['Open', 'In Progress', 'Closed'],
+      default: 'Open',
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   {
