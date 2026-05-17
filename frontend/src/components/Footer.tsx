@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300 mt-16">
+    <footer className="bg-slate-950 text-slate-300 mt-16 border-t border-slate-800">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
           <p className="text-sm">© 2026 Global TNA Job Board. All rights reserved.</p>

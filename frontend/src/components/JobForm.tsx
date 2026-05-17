@@ -106,7 +106,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
+          className={`w-full px-4 py-3 text-slate-700 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
             errors.title
               ? 'border-red-500 focus:ring-red-500'
               : 'border-slate-300 focus:ring-sky-500'
@@ -125,7 +125,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
           value={formData.description}
           onChange={handleChange}
           rows={4}
-          className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors resize-none ${
+          className={`w-full px-4 py-3 text-slate-700 border rounded-3xl focus:outline-none focus:ring-2 transition-colors resize-none ${
             errors.description
               ? 'border-red-500 focus:ring-red-500'
               : 'border-slate-300 focus:ring-sky-500'
@@ -145,7 +145,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-4 py-3 text-slate-700 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="e.g., Development"
           />
         </div>
@@ -159,7 +159,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="location"
             value={formData.location}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-4 py-3 text-slate-700 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="e.g., Remote"
           />
         </div>
@@ -175,7 +175,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="contactName"
             value={formData.contactName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-4 py-3 text-slate-700 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="Your name"
           />
         </div>
@@ -189,7 +189,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="contactEmail"
             value={formData.contactEmail}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
+            className={`w-full px-4 py-3 text-slate-700 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
               errors.contactEmail
                 ? 'border-red-500 focus:ring-red-500'
                 : 'border-slate-300 focus:ring-sky-500'

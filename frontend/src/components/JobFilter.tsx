@@ -27,7 +27,7 @@ export default function JobFilter({
 
       <select
         onChange={(e) => onStatusChange(e.target.value)}
-        className="w-full sm:w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full sm:w-1/3 px-4 py-2 border border-gray-300 rounded-lg text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <option value="">All Status</option>
         <option value="Open">Open</option>

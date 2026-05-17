@@ -71,25 +71,27 @@ export default function JobCard({ job }: JobCardProps) {
       )}
 
       {/* Footer */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-slate-200">
-        <div>
+      <div className="flex flex-col gap-4 pt-5 border-t border-slate-200 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <p className="text-xs text-slate-500">
             {formatDate(job.createdAt)}
           </p>
           <Link
             href={`/jobs/${job._id}`}
-            className="text-sky-600 text-sm font-medium hover:text-sky-700 transition-colors"
+            className="inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
-            View details
+            View
           </Link>
         </div>
 
-        <StatusDropdown
-          jobId={job._id}
-          status={job.status}
-          className="bg-white"
-          onSuccess={() => window.location.reload()}
-        />
+        <div className="sm:self-end">
+          <StatusDropdown
+            jobId={job._id}
+            status={job.status}
+            className="bg-white"
+            onSuccess={() => window.location.reload()}
+          />
+        </div>
       </div>
     </article>
   );
