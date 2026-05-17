@@ -96,7 +96,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label className="block text-sm font-semibold text-gray-900 mb-2">
           Job Title <span className="text-red-500">*</span>
@@ -106,10 +106,10 @@ export default function JobForm({ onSuccess }: JobFormProps) {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
+          className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
             errors.title
               ? 'border-red-500 focus:ring-red-500'
-              : 'border-gray-300 focus:ring-blue-500'
+              : 'border-slate-300 focus:ring-sky-500'
           }`}
           placeholder="Enter job title"
         />
@@ -125,10 +125,10 @@ export default function JobForm({ onSuccess }: JobFormProps) {
           value={formData.description}
           onChange={handleChange}
           rows={4}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors resize-none ${
+          className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors resize-none ${
             errors.description
               ? 'border-red-500 focus:ring-red-500'
-              : 'border-gray-300 focus:ring-blue-500'
+              : 'border-slate-300 focus:ring-sky-500'
           }`}
           placeholder="Enter job description"
         />
@@ -145,7 +145,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="e.g., Development"
           />
         </div>
@@ -159,7 +159,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="location"
             value={formData.location}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="e.g., Remote"
           />
         </div>
@@ -175,7 +175,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="contactName"
             value={formData.contactName}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-slate-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-sky-500"
             placeholder="Your name"
           />
         </div>
@@ -189,10 +189,10 @@ export default function JobForm({ onSuccess }: JobFormProps) {
             name="contactEmail"
             value={formData.contactEmail}
             onChange={handleChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
+            className={`w-full px-4 py-3 border rounded-3xl focus:outline-none focus:ring-2 transition-colors ${
               errors.contactEmail
                 ? 'border-red-500 focus:ring-red-500'
-                : 'border-gray-300 focus:ring-blue-500'
+                : 'border-slate-300 focus:ring-sky-500'
             }`}
             placeholder="your@email.com"
           />
@@ -203,7 +203,7 @@ export default function JobForm({ onSuccess }: JobFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+        className="w-full bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 text-white font-semibold py-3 rounded-full transition-colors flex items-center justify-center gap-2"
       >
         {loading && <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
         {loading ? 'Posting...' : 'Post Job'}

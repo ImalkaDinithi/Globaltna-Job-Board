@@ -12,10 +12,10 @@ export default function JobFilter({
   onStatusChange,
 }: JobFilterProps) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+    <div className="flex flex-col lg:flex-row gap-4 mb-8 items-stretch">
       <select
         onChange={(e) => onCategoryChange(e.target.value)}
-        className="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full lg:w-1/2 px-4 py-3 border border-slate-300 rounded-3xl bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
       >
         <option value="">All Categories</option>
         {categories.map((c) => (

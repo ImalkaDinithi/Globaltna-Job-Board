@@ -11,28 +11,37 @@ export default function NewJobPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Post a New Job</h1>
-          <p className="text-lg text-gray-600">
-            Fill out the form below to post a job request on the job board
-          </p>
-        </div>
+    <div className="container mx-auto px-4 py-10 lg:py-14">
+      <div className="max-w-3xl mx-auto space-y-8">
+        <section className="rounded-3xl bg-white shadow-sm border border-slate-200 p-8">
+          <div className="mb-8">
+            <p className="text-sm uppercase tracking-[0.3em] text-sky-600 font-semibold mb-4">
+              New posting
+            </p>
+            <h1 className="text-4xl font-semibold text-slate-900 mb-3">
+              Post a new job request
+            </h1>
+            <p className="text-slate-600 leading-7">
+              Share the job details and contact information needed for your team to move forward.
+            </p>
+          </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <JobForm onSuccess={handleSuccess} />
-        </div>
+          <div className="space-y-6">
+            <div className="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+              <JobForm onSuccess={handleSuccess} />
+            </div>
+          </div>
+        </section>
 
-        <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h3 className="font-semibold text-blue-900 mb-2">Tips for a great job posting:</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
-            <li>• Be clear and specific about the job requirements</li>
-            <li>• Include relevant details like location and timeline</li>
-            <li>• Provide accurate contact information</li>
-            <li>• Update the status as applications come in</li>
+        <aside className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Tips for a better job post</h3>
+          <ul className="space-y-3 text-slate-600">
+            <li>• Add context and describe the expected outcome.</li>
+            <li>• Keep the location and category clear.</li>
+            <li>• Provide accurate contact details for follow-up.</li>
+            <li>• Keep descriptions concise and structured.</li>
           </ul>
-        </div>
+        </aside>
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export default function JobList() {
 
   return (
     <div>
-      <JobFilter onCategoryChange={setCategory} onStatusChange={setStatus} />
+      <JobFilter categories={categories} onCategoryChange={setCategory} onStatusChange={setStatus} />
 
       {loading ? (
         <div className="flex items-center justify-center py-12">

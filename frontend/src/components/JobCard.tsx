@@ -1,34 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { Job } from './JobList';
 import StatusBadge from './StatusBadge';
-import { updateJobStatus } from '@/src/services/jobService';
-import toast from 'react-hot-toast';
+import StatusDropdown from './StatusDropdown';
 
 interface JobCardProps {
   job: Job;
 }
 
 export default function JobCard({ job }: JobCardProps) {
-  const [isUpdating, setIsUpdating] = useState(false);
-
-  const handleStatusChange = async (newStatus: string) => {
-    setIsUpdating(true);
-
-    try {
-      await updateJobStatus(job._id, newStatus);
-      toast.success('Status updated successfully');
-
-      // refresh page
-      window.location.reload();
-    } catch (error) {
-      toast.error('Failed to update status');
-    } finally {
-      setIsUpdating(false);
-    }
-  };
 
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString('en-US', {
@@ -38,9 +19,9 @@ export default function JobCard({ job }: JobCardProps) {
     });
 
   return (
-    <article className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+    <article className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
       {/* Header */}
-      <div className="flex justify-between items-start mb-3">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
         <div className="flex-1 pr-4">
           <Link href={`/jobs/${job._id}`} className="no-underline">
             <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors">
@@ -90,31 +71,25 @@ export default function JobCard({ job }: JobCardProps) {
       )}
 
       {/* Footer */}
-      <div className="flex justify-between items-center pt-4 border-t">
-        <div className="flex flex-col">
-          <p className="text-xs text-gray-500">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-slate-200">
+        <div>
+          <p className="text-xs text-slate-500">
             {formatDate(job.createdAt)}
           </p>
-
           <Link
             href={`/jobs/${job._id}`}
-            className="text-blue-600 text-sm font-medium mt-1"
+            className="text-sky-600 text-sm font-medium hover:text-sky-700 transition-colors"
           >
             View details
           </Link>
         </div>
 
-        {/* Status Dropdown */}
-        <select
-          value={job.status}
-          onChange={(e) => handleStatusChange(e.target.value)}
-          disabled={isUpdating}
-          className="px-3 py-1 text-sm border border-gray-300 rounded hover:border-gray-400 disabled:opacity-50"
-        >
-          <option value="Open">Open</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Closed">Closed</option>
-        </select>
+        <StatusDropdown
+          jobId={job._id}
+          status={job.status}
+          className="bg-white"
+          onSuccess={() => window.location.reload()}
+        />
       </div>
     </article>
   );
