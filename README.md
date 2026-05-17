@@ -2,9 +2,61 @@
 
 This is a full-stack web application built for the GlobalTNA Full-Stack Developer Intern Technical Assessment.
 
-The system allows users to create, view, update, and delete service job requests.
+This application allows homeowners to post service requests and tradespeople to browse, manage, and update job statuses.
 
 ---
+
+🚀 Tech Stack
+
+# Frontend
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Axios
+
+# Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+
+# Deployment
+- Frontend: Vercel
+- Backend: Render
+
+✨ Features
+
+# Home Page
+- View all service requests
+- Filter jobs by category
+- Responsive card-based UI
+
+# Create New Job
+- Add a new service request
+- Client-side form validation
+- Stores data in MongoDB
+
+# Job Detail Page
+- View complete job information
+- Update job status:
+    *Open
+    *In Progress
+    *Closed
+- Delete jobs
+
+# Backend REST API
+- GET all jobs
+- GET single job
+- POST new job
+- PATCH job status
+- DELETE job
+
+# Additional Features
+- Global error handling
+- Input validation
+- MongoDB Atlas integration
+- Clean folder structure
+
 
 ## 📁 Project Structure
 
@@ -32,7 +84,6 @@ npm install
 🔐 Required Environment Variables (Backend)
 
 Create a .env file inside the backend folder:
-
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 
@@ -46,6 +97,7 @@ npm install
 Create a .env.local file inside the frontend folder:
 
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
+
 
 ## Run Instructions
 
@@ -65,9 +117,7 @@ Frontend will run on: http://localhost:3000
 🔗 API Overview
 
 ## Base URL:
-
 /api/jobs
-
 
 # Endpoints
 GET /api/jobs → Get all jobs
@@ -76,11 +126,27 @@ POST /api/jobs → Create new job
 PATCH /api/jobs/:id → Update job status
 DELETE /api/jobs/:id → Delete a job
 
+🧪 Sample Job Object
+{
+  "title": "Need a plumber for leaking kitchen tap",
+  "description": "Kitchen sink tap is leaking and needs urgent repair.",
+  "category": "Plumbing",
+  "location": "Glasgow",
+  "contactName": "John Doe",
+  "contactEmail": "john@example.com",
+  "status": "Open"
+}
+
+
+🌐 Live Demo
+Frontend: https://globaltna-job-board-iota.vercel.app/
+
+Backend API: https://globaltna-job-board-1.onrender.com
 
 🧪 Notes
-Ensure MongoDB is running or MongoDB Atlas is configured properly
-Backend must be running before frontend requests will work
-Environment variables must be set correctly for both frontend and backend
+- Ensure MongoDB is running or MongoDB Atlas is configured properly
+- Backend must be running before frontend requests will work
+- Environment variables must be set correctly for both frontend and backend
 
 👨‍💻 Author
 
